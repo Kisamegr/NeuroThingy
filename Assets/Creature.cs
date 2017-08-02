@@ -1,0 +1,1 @@
+using System.Collections;using System.Collections.Generic;using UnityEngine;public class Creature : MonoBehaviour{	public NeuralJoint[] joints;	public 	void Start() {	}	void Update() {	}}
