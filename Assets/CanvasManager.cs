@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using System.Xml.XPath;
-using UnityEditor.VersionControl;
 
 public class CanvasManager : MonoBehaviour
 {

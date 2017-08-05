@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Linq;
-using NUnit.Framework;
 
 public class Plot : MonoBehaviour
 {
