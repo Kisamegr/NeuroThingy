@@ -91,7 +91,7 @@ public class SimulationManager : MonoBehaviour
     Debug.Log ("Starting Generation " + currentGeneration);
     if (firstTime) {
       for (int i = 0; i < populationNumber; i++) {
-        Creature newCreature = createCreature (0);
+        Creature newCreature = CreateCreature (0);
         newCreature.neuralNet.InitializeRandomNet ();
 
         spawnedCreatures.Add (newCreature);
@@ -236,7 +236,7 @@ public class SimulationManager : MonoBehaviour
         if (spawnedCreatures.Count == populationNumber)
           break;
 
-        children.Add (createCreature (currentGeneration + 1));
+        children.Add (CreateCreature (currentGeneration + 1));
 
         for (int l = 1; l < tempNet.N.Length; l++) {
           for (int x = 0; x < tempNet.N [l]; x++) {
@@ -305,7 +305,7 @@ public class SimulationManager : MonoBehaviour
   }
 
 
-  private Creature createCreature(int genNum) {
+  private Creature CreateCreature(int genNum) {
     Creature creature = Instantiate (creaturePrefab, creaturePrefab.transform.position, Quaternion.identity).GetComponent<Creature> ();
     creature.generationCreated = genNum;
     creature.neuralNet.N [1] = hiddenLayerNum;
