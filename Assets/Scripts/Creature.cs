@@ -20,9 +20,14 @@ public class Creature : MonoBehaviour {
   private int speedCounter;
 
   private SimulationManager simulation;
+  private FollowCreature cameraScript;
+  private bool addedToCamera;
 
   private void Awake() {
     simulation = GameObject.Find("_SIMULATION").GetComponent<SimulationManager>();
+    cameraScript = GameObject.Find("Main Camera").GetComponent<FollowCreature>();
+
+    ResetCreature(true);
   }
 
   void FixedUpdate() {
@@ -39,6 +44,14 @@ public class Creature : MonoBehaviour {
     speedSum += limbSpeedSum / limbs.Length;
     speedCounter++;
     medianSpeed = speedSum / speedCounter;
+
+    if(!addedToCamera) {
+      if(centroid.x > cameraScript.xLimit) {
+        cameraScript.targets.Add(this);
+        addedToCamera = true;
+      }
+    }
+    
   }
 
   public void Think() {
@@ -47,22 +60,22 @@ public class Creature : MonoBehaviour {
     fitness = simulation.fitDistanceWeight*centroid.x + simulation.fitSpeedWeight*medianSpeed;
   }
 
-  public void ResetCreature() {
+  public void ResetCreature(bool constructor = false) {
 
-    foreach (NeuralJoint joint in joints)
-      joint.ResetBodyPart();
+    if(!constructor) {
+      foreach (NeuralJoint joint in joints)
+        joint.ResetBodyPart();
 
-    foreach (NeuralLimb limb in limbs)
-      limb.ResetBodyPart();
-    
-    
-    
-    
+      foreach (NeuralLimb limb in limbs)
+        limb.ResetBodyPart();
+    }
+        
     fitness = 0;
     centroid = Vector2.zero;
     speedSum = 0;
     speedCounter = 0;
     medianSpeed = 0;
+    addedToCamera = false;
   }
 
 }

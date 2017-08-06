@@ -9,6 +9,7 @@ public class FollowCreature : MonoBehaviour
   public List<Creature> targets;
   public float cameraDeltaUpdate = 0.025f;
   public float followSpeed;
+  public float xLimit;
 
   private SimulationManager simulation;
   private Vector3 originalPosition;
