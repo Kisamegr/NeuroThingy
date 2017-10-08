@@ -2,7 +2,7 @@
 
 A 2D simulation using 3-layer perceptron neural networks that controls a creature's joints, updating the network's weights using simple genetic algorithms. The goal of the simulation is to evolve those creatures, that start with no idea on how to move their limbs, to learn how to walk forward and progress with each generation.
 
-![Web demo here](http://neurothingy.azurewebsites.net/)
+[Web demo here](http://neurothingy.azurewebsites.net/)
 
 ![Generic Screenshot](https://i.imgur.com/YmEiBZa.png)
   
